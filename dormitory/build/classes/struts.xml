@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- <constant name="struts.devMode" value="true" /> <constant name="struts.multipart.saveDir" 
+		value="/tmp"/> <constant name="struts.action.extension" value="action"></constant> -->
+	<!--支持动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<!--修改struts.xml 不用重启容器 -->
+	<constant name="struts.devMode" value="true" />
+
+	<package name="dormitory" extends="struts-default" namespace="/">
+		<action name="login" class="action.LoginAction">
+			<result name="success">/Index.jsp</result>
+			<result name="error">/Login.jsp</result>
+		</action>
+		<action name="buildingAdminAction_*" class="action.BuildingAdminAction"
+			method="{1}">
+			<result name="BuildingAdminList.jsp">/BuildingAdminList.jsp</result>
+			<result name="tolist" type="redirect">/buildingAdminAction_tolist
+			</result>
+			<result name="BuildingAdminUpd.jsp">/BuildingAdminUpd.jsp</result>
+			
+			<result name="BuildingChangePwd.jsp">/BuildingChangePwd.jsp</result>
+
+		</action>
+		<action name="studentAction_*" class="action.StudentAction"
+			method="{1}">
+			<result name="StudentList.jsp">/StudentList.jsp</result>
+			<result name="StudentUpd.jsp">/StudentUpd.jsp</result>
+			<result name="tolist" type="redirect">/studentAction_tolist</result>
+			<result name="StudentAdd.jsp">/StudentAdd.jsp</result>
+		</action>
+		<action name="buildingAction_*" class="action.BuildingAction"
+			method="{1}">
+			<result name="BuildingList.jsp">/BuildingList.jsp</result>
+			<result name="BuildingUpd.jsp">/BuildingUpd.jsp</result>
+			<result name="tolist" type="redirect">/buildingAction_tolist</result>
+		</action>
+		<action name="dormitoryAction_*" class="action.DormitoryAction"
+			method="{1}">
+			<result name="DormitoryList.jsp">/DormitoryList.jsp</result>
+			<result name="tolist" type="redirect">/dormitoryAction_tolist</result>
+			<result name="DormitoryUpd.jsp">/DormitoryUpd.jsp</result>
+
+		</action>
+		<action name="leaveSchoolAction_*" class="action.LeaveSchoolAction"
+			method="{1}">
+			<result name="LeaveSchoolList.jsp">/LeaveSchoolList.jsp</result>
+			<result name="tolist" type="redirect">/leaveSchoolAction_tolist</result>
+
+		</action>
+		<action name="sleepRecordsAction_*" class="action.SleepRecordsAction"
+			method="{1}">
+			<result name="SleepRecordsList.jsp">/SleepRecordsList.jsp</result>
+
+		</action>
+		<action name="adminAction_*" class="action.AdminAction" method="{1}">
+			<result name="AdminPasswordUpdate.jsp">/AdminPasswordUpdate.jsp</result>
+
+		</action>
+		<!--楼宇管理员 -->
+		<action name="MyStudent" class="action.MyStudentAction">
+			<result name="success">/MyStudent.jsp</result>
+		</action>
+		<action name="MyStudentListAction" class="action.MyStudentListAction">
+			<result name="success">/MyStudentList.jsp</result>
+			<result name="mylist">/MyStudentList.jsp</result>
+		</action>
+
+		<action name="LogAdd" class="action.LogAdd">
+			<result name="success">/LogAdd.jsp</result>
+		</action>
+
+		<action name="MyLog" class="action.MyLogAction">
+			<result name="success">/MyLog.jsp</result>
+		</action>
+		<action name="MyLogListAction" class="action.MyLogListAction">
+			<result name="success">/MyLogList.jsp</result>
+			<result name="mylog">/MyLogList.jsp</result>
+		</action>
+		
+
+		<!-- 修改学生密码 -->
+		<action name="studentAction_PasswordUpdate" class="action.StudentAction"
+			method="PasswordUpdate">
+			<result name="success">/PasswordUpdate.jsp</result>
+
+		</action>
+		<!-- 查找缺寝记录 -->
+		<action name="sleeprecords_FindAllBySid" class="action.SleepRecordsAction"
+			method="FindAllBySid">
+			<result name="success">/StudentLog.jsp</result>
+
+		</action>
+		<!-- 查找维修信息 -->
+		<action name="maintainAction_FindAllBySid" class="action.MaintainAction"
+			method="FindAllBySid">
+			<result name="success">/RepairList.jsp</result>
+		</action>
+		<!-- 添加维修信息 -->
+		<action name="maintainAction_add" class="action.MaintainAction"
+			method="add">
+			<result name="success">/RepairAdd.jsp</result>
+		</action>
+
+	</package>
+</struts>

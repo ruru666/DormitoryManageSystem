@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 该文件用于配置pojo类与数据库表之间的映射 -->
+<hibernate-mapping package="bean" >
+	<class name="LeaveSchool" table="leaveschool">
+	<!-- id元素用于指定主键属性 -->
+	  <id name="id"  column="id">	  
+	    <generator class="native"></generator>
+	  </id>
+	  <!-- property元素用于配置pojo类中在普通属性与数据库表中的列之间 的映射关系-->
+	  <property name="state" column="state"></property>
+	   <property name="time" column="time"></property>
+	   <property name="uname" column="uname"></property>
+	 <many-to-one name="stu" class="Student" column="s_id" cascade="all">
+	 </many-to-one>
+	</class>
+
+	
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 该文件用于配置pojo类与数据库表之间的映射 -->
+<hibernate-mapping package="bean">
+	<class name="Student" table="student">
+	<!-- id元素用于指定主键属性 -->
+	  <id name="id"  column="s_id">	  
+	    <generator class="native"></generator>
+	  </id>
+	  <!-- property元素用于配置pojo类中在普通属性与数据库表中的列之间 的映射关系-->
+	    <property name="s_uname" column="s_uname"></property>
+	    <property name="s_pwd" column="s_pwd"></property>
+	    <property name="s_name" column="s_name"></property>
+	    <property name="s_sex" column="s_sex"></property>
+	    <property name="s_tel" column="s_tel"></property>
+	    <property name="s_building" column="s_building"></property>
+	    <property name="s_dormitory" column="s_dormitory"></property>
+	    <!-- 多对一关系映射 -->
+	<many-to-one name="buildingAdmin" class="BuildingAdmin" column="b_id"  cascade="all">
+	  
+	 </many-to-one>
+	 
+	</class>
+
+	
+</hibernate-mapping>
